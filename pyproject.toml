@@ -1,0 +1,10 @@
+[project]
+name = "agentic-self-learning"
+version = "0.1.0"
+description = "Replica ligera de Agentic Self-Learning con agentes de preguntas, respuestas y evaluacion."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+asl-lite = "agentic_self_learning.cli:main"
