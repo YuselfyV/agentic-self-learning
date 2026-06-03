@@ -8,3 +8,4 @@ dependencies = []
 
 [project.scripts]
 asl-lite = "agentic_self_learning.cli:main"
+asl-lite-server = "agentic_self_learning.server:main"

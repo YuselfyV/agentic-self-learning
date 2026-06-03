@@ -58,6 +58,58 @@ python -m agentic_self_learning.cli \
   --question "Cual es la capital de Colombia?"
 ```
 
+Puedes hacer preguntas en espanol si usas `--wikipedia-language es`. Tambien puedes hacer preguntas en ingles con `--wikipedia-language en`.
+
+Importante: este proyecto responde con recuperacion de evidencia. Puede recibir cualquier pregunta, pero funciona mejor con preguntas factuales que tengan una respuesta concreta y aparezcan en Wikipedia.
+
+## Usarlo sin tenerlo localmente
+
+Hay dos caminos sencillos:
+
+1. GitHub Codespaces: abre el repositorio en Codespaces y ejecuta los comandos desde el navegador.
+2. Despliegue como API: publica el proyecto en un servicio como Render, Railway, Fly.io, Hugging Face Spaces o una maquina virtual.
+
+El proyecto incluye un servidor HTTP minimo:
+
+```bash
+python3 -m agentic_self_learning.server --host 0.0.0.0 --port 8000
+```
+
+Luego abre esta direccion en el navegador para usar la interfaz:
+
+```text
+http://localhost:8000/
+```
+
+La API sigue disponible para otras aplicaciones:
+
+```text
+http://localhost:8000/ask?source=wikipedia&language=es&question=Cual%20es%20la%20capital%20de%20Colombia
+```
+
+O desde otra aplicacion:
+
+```bash
+curl "http://localhost:8000/ask?source=wikipedia&language=es&question=Cual%20es%20la%20capital%20de%20Colombia"
+```
+
+### Despliegue sugerido en Render
+
+1. Sube este proyecto a GitHub.
+2. En Render, crea un nuevo Web Service desde el repositorio.
+3. Usa Python como entorno.
+4. En Start Command coloca:
+
+   ```bash
+   python3 -m agentic_self_learning.server --host 0.0.0.0 --port $PORT
+   ```
+
+5. Cuando Render entregue una URL publica, consulta:
+
+   ```text
+   https://TU-URL.onrender.com/ask?source=wikipedia&language=es&question=Cual%20es%20la%20capital%20de%20Colombia
+   ```
+
 ### Paso a paso
 
 1. Verifica que Python este disponible:

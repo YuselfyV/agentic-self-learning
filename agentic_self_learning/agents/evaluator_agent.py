@@ -13,7 +13,7 @@ class QuestionEvaluatorAgent:
         expected = self._strip_tag(generated_question.expected_answer, "answer")
         predicted = self._strip_tag(answer.answer, "answer")
         question = self._strip_tag(generated_question.question, "question")
-        question_is_solvable = bool(generated_question.evidence and expected and question.endswith("?"))
+        question_is_solvable = bool(generated_question.evidence and expected and question)
 
         if not question_is_solvable:
             return Evaluation(
